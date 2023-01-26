@@ -5,22 +5,22 @@ namespace WebApplication2.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class FooClassController : ControllerBase
+public class CalculatorController : ControllerBase
 {
     private readonly IPersistanceDataService _dataService;
 
-    public FooClassController(IPersistanceDataService dataService)
+    public CalculatorController(IPersistanceDataService dataService)
     {
         _dataService = dataService;
     }
 
-    [HttpGet(Name = "Sum")]
+    [HttpGet("Summ")]
     public int GetSum(int a, int b)
     {
         return a + b;
     }
 
-    [HttpGet(Name = "Sub")]
+    [HttpGet("Sub")]
     public int GetSub(int a, int b)
     {
         return a - b;
