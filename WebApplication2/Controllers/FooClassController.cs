@@ -14,17 +14,15 @@ public class FooClassController : ControllerBase
         _dataService = dataService;
     }
 
-    [HttpGet(Name = "GetWeatherForecast")]
-    public List<int> Get()
+    [HttpGet(Name = "Sum")]
+    public int GetSum(int a, int b)
     {
-        return _dataService.Ints;
+        return a + b;
     }
 
-    [HttpPost(Name = "SetWeatherForecast")]
-    public bool Post(int i)
+    [HttpGet(Name = "Sub")]
+    public int GetSub(int a, int b)
     {
-        _dataService.Ints.Add(i);
-
-        return true;
+        return a - b;
     }
 }
