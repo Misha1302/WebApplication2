@@ -7,22 +7,18 @@ namespace WebApplication2.Controllers;
 [Route("[controller]")]
 public class CalculatorController : ControllerBase
 {
-    private readonly IPersistanceDataService _dataService;
+    private readonly ICalculator _calculator;
 
-    public CalculatorController(IPersistanceDataService dataService)
+    public CalculatorController(ICalculator calculator)
     {
-        _dataService = dataService;
+        _calculator = calculator;
     }
 
     [HttpGet("Summ")]
-    public int GetSum(int a, int b)
-    {
-        return a + b;
-    }
+    public float GetSum(float a, float b) =>
+        _calculator.Add(a, b);
 
     [HttpGet("Sub")]
-    public int GetSub(int a, int b)
-    {
-        return a - b;
-    }
+    public float GetSub(float a, float b) =>
+        _calculator.Subtract(a, b);
 }

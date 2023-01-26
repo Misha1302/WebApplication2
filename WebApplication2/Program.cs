@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<IPersistanceDataService, PersistenceDataService>();
+builder.Services.AddScoped<ICalculator, Calculator>();
 
 var app = builder.Build();
 
