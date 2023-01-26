@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using WebApplication2.Services;
 
 namespace WebApplication2.Controllers;
 
@@ -6,18 +7,23 @@ namespace WebApplication2.Controllers;
 [Route("[controller]")]
 public class FooClassController : ControllerBase
 {
-    private readonly List<int> _ints = new();
+    private readonly IPersistanceDataService _dataService;
+
+    public FooClassController(IPersistanceDataService dataService)
+    {
+        _dataService = dataService;
+    }
 
     [HttpGet(Name = "GetWeatherForecast")]
     public List<int> Get()
     {
-        return _ints;
+        return _dataService.Ints;
     }
 
     [HttpPost(Name = "SetWeatherForecast")]
     public bool Post(int i)
     {
-        _ints.Add(i);
+        _dataService.Ints.Add(i);
 
         return true;
     }
